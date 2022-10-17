@@ -1,0 +1,25 @@
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex
+}
+
+ul li span {
+    border: 1px solid black;
+    padding: 10px;
+    background-color: white;
+    margin-right: 5px;
+    text-transform: capitalize;
+}
+
+span.highlight {
+    background-color: red;
+    color: white;
+}
+
+input.selected {
+    background-color: rosybrown;
+    border-radius: 10px;
+}
+

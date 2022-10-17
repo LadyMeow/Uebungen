@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Fetch Post</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+<body>
+    <h1>Fetch Post</h1>
+    <div id="content"></div>
+</body>
+<script>
+let myTitle = "Es war einmal ein ... "
+
+// in einer asynchronen funktion
+async function load(){
+    console.log("bin in load");
+    let response = await fetch("https://jsonplaceholder.typicode.com/posts/");
+    if(response.ok){ // wenn http status 200-299
+        let result = await response.json();
+        myTitle = result[0].title;
+    }
+    else{
+        alert("HTTP-Error: " + response.status)
+    }
+}
+
+async function start(){
+    console.log(myTitle);
+    // Wie unterscheiden sich die Ergebnisse?
+    // Einmal mit await einmal ohne await ausprobieren
+    // Erläuterung dazu siehe unten
+    await load();
+    //load();
+    console.log(myTitle);
+}
+start()
+
+//  Hier weiter unten gleich die Erläuterung
+
+
+
+// unser Code wartet nicht auf die Exekution der asynchronen
+// Funktion -> deshalb ist es ja eine asynchrone Funktion und 
+// keine "normale" Funktion
+// Wenn unser Code danach aber abhängig ist von den Ergebnissen
+// der Funktion (weil zb durch den Code eine Variable gesetzt wird)
+// dann müssen wir darauf warten bis es fertig ist
+// --> await
+// wenn wir die Ergebnisse jetzt nicht unbedingt für die folgenden Zeilen
+// Code benötigen dann müssten wir nicht warten
+// Falls es wen (theoretisch) genauer interessiert:
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await
+</script>
+</html>

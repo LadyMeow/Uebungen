@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Vorlage</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+<body>
+    <h1>Vorlage</h1>
+    <div id="content"></div>
+</body>
+<script>
+// erzeugen neues objekt
+let xhr = new XMLHttpRequest();
+
+// konfigurieren requrest - öffnen ih noch nicht
+// xhr.open(method, URL, [async, user, password])
+xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/");
+
+// zwei typen: "document" for xml or "json" for json
+xhr.responseType = "json";
+
+//request wird gesendet
+xhr.send();
+
+// wenn request erfolgreich war wird ausgeführt
+xhr.onload = function() {
+    if(xhr.status != 200)
+    {
+        // fehlerfall
+        alert(`Error ${xhr.status}: ${xhr.statusText}`)
+    }
+    else{
+        // zeigen Ergebnisse an
+        let erg = xhr.response;
+        console.log(erg);
+        //alert(erg[0].title)
+        //alert(JSON.stringify(erg));
+    }
+};
+xhr.onerror = function(){
+    alert("Leider nicht funktioniert");
+};
+
+</script>
+</html>

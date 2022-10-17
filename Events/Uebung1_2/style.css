@@ -1,0 +1,22 @@
+li {
+    border: 1px solid rosybrown;
+    padding: 0.5em;
+    margin: 0.2em;
+    background-color: lavenderblush;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+}
+
+.selected {
+    background-color: rosybrown;
+}
+
+.mouseoverLetter {
+    background-color: rebeccapurple;
+    color: lavenderblush;
+}
